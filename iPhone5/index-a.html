@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="css/cath.css" />
+	<script> 
+    var myAppController =
+        {                   
+          onArgonReady : function()
+            {
+  				geoSpot = new AR.GeoSpotPanorama(["Panorama/GS02/Y1207/Image_right.png",
+                                                  "Panorama/GS02/Y1207/Image_left.png",
+                                                  "Panorama/GS02/Y1207/Image_top.png",
+                                                  "Panorama/GS02/Y1207/Image_bottom.png",
+                                                  "Panorama/GS02/Y1207/Image_front.png",
+                                                  "Panorama/GS02/Y1207/Image_back.png"]); 
+				}
+	 	};
+	 
+	document.addEventListener("AR.ArgonReadyEvent", myAppController.onArgonReady);
+	</script>
+	</head>
+	<body>
+       <script type="text/javascript" src="js/jquery.js"></script>
+       <script type="text/javascript" src="js/cath.js"></script>
+	
+
+        <!-- DIV tags for Loading splashscreen-->                                                                                                                                                                                                                                                                                             
+        <div align="center" class="splashscreen" id="splashscreenid">
+			<center>
+				<img src="Images/TitlePage.png"/>
+			</center>                        
+        </div>
+        
+        <!-- DIV tags for Loading Label-->                                                                                                                                                
+        <div align="center" class="overlaystyleLoading" id="overlayLoading">
+            <span align="center">LOADING...</span>
+        </div>
+            
+        <!-- DIV tags for Main menu-->                                                                                                                        
+        <div align="center" class="mMainMenu" id="overlayMainMenu" alt="on" style="display:none;">
+            <div align="center" class="mainHome" id="mainmenu0">
+                <img src="Images/Mainmenu/Menu00j.png" alt="home" id="Mainmenu0Btn" name="Mainmenu0Btn" class="mainHome" border="0"   />
+            </div>
+            <div align="center" class="mainButton" id="mainmenu1">
+                <a href="#" class="mainButton" id="Mainmenu1ID" name="Mainmenu1ID" onclick="menuSelected('1'); return false;" >
+                <img src="Images/Mainmenu/Menu01j.png" alt="Map" id="Mainmenu1Btn" name="Mainmenu1Btn" class="mainButton" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="mainButton" id="mainmenu2">
+                <a href="#" class="mainButton" id="Mainmenu2ID" name="Mainmenu2ID" onclick="menuSelected('2'); return false;" >
+                <img src="Images/Mainmenu/Menu02j.png" alt="Map" id="Mainmenu2Btn" name="Mainmenu2Btn" class="mainButton" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="mainButton" id="mainmenu3">
+                <a href="#" class="mainButton" id="Mainmenu3ID" name="Mainmenu3ID" onclick="menuSelected('3'); return false;" >
+                <img src="Images/Mainmenu/Menu03j.png" alt="Map" id="Mainmenu3Btn" name="Mainmenu3Btn" class="mainButton" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="mainButton" id="mainmenu4">
+                <a href="#" class="mainButton" id="Mainmenu4ID" name="Mainmenu4ID" onclick="menuSelected('4'); return false;" >
+                <img src="Images/Mainmenu/Menu04j.png" alt="Map" id="Mainmenu4Btn" name="Mainmenu4Btn" class="mainButton" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="mainButton" id="mainmenu5">
+                <a href="#" class="mainButton" id="Mainmenu5ID" name="Mainmenu5ID" onclick="menuSelected('5'); return false;" >
+                <img src="Images/Mainmenu/Menu05j.png" alt="Map" id="Mainmenu5Btn" name="Mainmenu5Btn" class="mainButton" border="0"   />
+                </a>	
+            </div>
+        </div>
+        
+        <!-- DIV tags for Main Map menu-->                                                                                                                        
+        <div align="center" class="mMapMenu" id="overlayMap">
+            <div align="center" class="mapMap1" id="overlaym1">
+                <a href="#" class="mapMap1" id="map1ID" name="map1ID" onclick="GSSelected('4');return false;" >
+                <img src="Images/MapMenu/Map/Map01.png" alt="Cathedral Floor Plan" id="Map1Btn" name="Map1Btn" class="mapMap1" border="0"   />
+                </a>
+            </div>
+            <div align="center" class="mapMap2" id="overlaym2">
+                <img src="Images/MapMenu/Map/Map02.png" alt="Cathedral Floor Plan" id="Map2Btn" name="Map2Btn" class="mapMap2" border="0"   />
+            </div>
+            <div align="center" class="mapMap3" id="overlaym3">
+                <a href="#" class="mapMap3" id="map3ID" name="map3ID" onclick="GSSelected('5');return false;" >
+                <img src="Images/MapMenu/Map/Map03.png" alt="Cathedral Floor Plan" id="Map3Btn" name="Map3Btn" class="mapMap3" border="0"   />
+                </a>	
+            </div>            
+            <div align="center" class="mapMap4" id="overlaym4">
+                <a href="#" class="mapMap4" id="map4ID" name="map4ID" onclick="GSSelected('2');return false;" >
+                <img src="Images/MapMenu/Map/Map04.png" alt="Cathedral Floor Plan" id="Map4Btn" name="Map4Btn" class="mapMap4" border="0"   />
+                </a>
+            </div>  
+            <div align="center" class="mapMap5" id="overlaym5">
+                <img src="Images/MapMenu/Map/Map05.png" alt="Cathedral Floor Plan" id="Map5Btn" name="Map5Btn" class="mapMap5" border="0"   />
+            </div>
+            <div align="center" class="mapMap6" id="overlaym6">
+                <a href="#" class="mapMap6" id="map6ID" name="map6ID" onclick="GSSelected('3');return false;" >
+                <img src="Images/MapMenu/Map/Map06.png" alt="Cathedral Floor Plan" id="Map6Btn" name="Map6Btn" class="mapMap6" border="0"   />
+                </a>
+            </div>
+            <div align="center" class="mapMap7" id="overlaym7">
+                <img src="Images/MapMenu/Map/Map07.png" alt="Cathedral Floor Plan" id="Map7Btn" name="Map7Btn" class="mapMap7" border="0"   />
+            </div>
+            <div align="center" class="mapMap8" id="overlaym8">
+                <img src="Images/MapMenu/Map/Map08.png" alt="Cathedral Floor Plan" id="Map8Btn" name="Map8Btn" class="mapMap8" border="0"   />
+            </div>
+            <div align="center" class="mapMap9" id="overlaym9">
+                <a href="#" class="mapMap9" id="map9ID" name="map9ID" onclick="GSSelected('1');return false;" >
+                <img src="Images/MapMenu/Map/Map09.png" alt="Cathedral Floor Plan" id="Map9Btn" name="Map9Btn" class="mapMap9" border="0"   />
+                </a>
+            </div>
+            <div align="center" class="mapMap10" id="overlaym10">
+                <img src="Images/MapMenu/Map/Map10.png" alt="Cathedral Floor Plan" id="Map10Btn" name="Map10Btn" class="mapMap10" border="0"   />
+            </div>
+        </div>
+        
+        
+        <!-- Div tags for Virtual Tour Start page -->
+        <div align="center" class="mMapMenu" id="navBG">
+            <div align="center" class="navPopup" id="navPopupDiv">
+                <div align="center" class="navPopupBtn" style="position:absolute;left:40px; top:275px;">
+                    <a href="#" onclick="menuSelected('1');return false;" >
+                    <img src="Images/VT/Go2Map.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navPopupBtn" style="position:absolute;left:160px; top:275px;">
+                    <a href="#" onclick="GSSelected('1');return false;" >
+                    <img src="Images/VT/Startat1.png" alt="Ok" border="0"/ >
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Div tags for Virtual Tour next page -->
+        <div align="center" class="mMapMenu" id="navBGNext" style="display:none;">
+            <div align="center" class="navPopup" id="navPopupNext">
+                <div align="center" class="navPopupBtn" id="navPopupBtn1" style="position:absolute;left:40px; top:275px;">
+                    <a href="#" id="navPopupBtn1A" onclick="GSSelected('1');return false;" >
+                    <img  id="navPopupBtn1I" src="Images/VT/Start.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navPopupBtn" id="navPopupBtn2" style="position:absolute;left:160px; top:275px;">
+                    <a id="navPopupBtn2A" href="#" onclick="GSSelected('1');return false;" >
+                    <img id="navPopupBtn2I" src="Images/VT/Cancel.png" alt="Ok" border="0"/ >
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Div tags for Virtual Tour GS page -->
+        <div align="center" class="mMapMenu" id="navGS" style="display:none;">
+                <div align="center" class="navPopupBtn" id="GSC1Btn" style="position:absolute;left:40px; top:275px;">
+                    <a href="#"  id="GSC1BtnA" onclick="slideAudioMenu();return false;" >
+                    <img id="GSC1BtnI" src="Images/VT/Start.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navPopupBtn" id="GSC2Btn" style="position:absolute;left:160px; top:275px;">
+                    <a href="#"  id="GSC2BtnA" onclick=";return false;" >
+                    <img id="GSC2BtnI" src="Images/VT/Cancel.png" alt="Ok" border="0"/ >
+                    </a>
+                </div>
+        </div>
+        
+        <!-- Div tags for Music Menu -->
+        <div align="center" class="musicMenu" id="navMusic" style="display:none;" alt="off">
+            <div align="center" class="navPopupMusic" id="navPopupMusicID">
+                <div align="center" class="navMusicBtn" style="position:absolute;left:170px; top:45px;">
+                    <a href="#" onclick="togglePlayPause();return false;" >
+                    <img id="play1" src="Images/Audio/play.png" alt="stopped" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navMusicBtn" style="position:absolute;left:210px; top:45px;">
+                    <a href="#" onclick="stopNarrations();return false;" >
+                    <img id="stop1" src="Images/Audio/stop.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navMusicBtn" style="position:absolute;left:170px; top:90px;">
+                    <a href="#" onclick="toggleMusicOn();return false;" >
+                    <img id="play2" src="Images/Audio/play.png" alt="stopped" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navMusicBtn" style="position:absolute;left:210px; top:90px;">
+                    <a href="#" onclick="stopMusic();return false;" >
+                    <img id="stop2" src="Images/Audio/stop.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                
+                <div align="center" class="navMusicBtn" style="position:absolute;left:40px; top:122px;">
+                    <a href="#" onclick="radioSelect(1);return false;" >
+                    <img id="radio1" src="Images/Audio/radio_selected.png" alt="checked" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navMusicBtn" style="position:absolute;left:40px; top:147px;">
+                    <a href="#" onclick="radioSelect(2);return false;" >
+                    <img id="radio2" src="Images/Audio/radio.png" alt="unchecked" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navMusicBtn" style="position:absolute;left:40px; top:172px;">
+                    <a href="#" onclick="radioSelect(3);return false;" >
+                    <img id="radio3" src="Images/Audio/radio.png" alt="unchecked" border="0"/>
+                    </a>
+                </div>
+                
+                <div align="center" class="navPopupBtn" style="position:absolute;left:30px; top:210px;">
+                    <a href="#" onclick="slideAudioMenu();return false;" >
+                    <img src="Images/Audio/Cancel.png" alt="Ok" border="0"/>
+                    </a>
+                </div>
+                <div align="center" class="navPopupBtn" style="position:absolute;left:155px; top:210px;">
+                    <a href="#" onclick="slideAudioMenu();return false;" >
+                    <img src="Images/Audio/Save.png" alt="Ok" border="0"/ >
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Div tags for Gallery List page -->
+        <div align="center" class="mMapMenu" id="GalleryList" style="display:none;">
+            <ul class="menuBubblesSubGallery">
+                <li>
+                    <a href="#" id="galgs1A" onclick="showGallery('1'); return false;">
+                        <img id="galgs1" src="Images/Gallery/GalBtn1.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="galgs2A" onclick="showGallery('2'); return false;">
+                        <img id="galgs2" src="Images/Gallery/GalBtn2.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="galgs3A" onclick="showGallery('3'); return false;">
+                        <img id="galgs3" src="Images/Gallery/GalBtn3.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="galgs4A" onclick="showGallery('4'); return false;">
+                        <img id="galgs4" src="Images/Gallery/GalBtn4.png"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Div tags for GS Context Menu -->
+        <div align="center" class="overlaystyleGS01Sub" id="GSContextMenu" alt="off">
+            <ul class="menuBubblesSub">
+                <li>
+                    <a href="#" id="p1207_1" onclick="hideContextMenu(11);flyTonextPlacemark('DameLaRonde1'); return false;">
+                        <img id="p1207Btn" src="Images/GS/GS11.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="p1380_1" onclick="hideContextMenu(12);flyTonextPlacemark('DameLaRonde2'); return false;">
+                        <img id="p1380Btn" src="Images/GS/GS12.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="p1880_1" onclick="hideContextMenu(13);window.alert('Under Construction'); return false;">
+                        <img id="p1880Btn" src="Images/GS/GS13.png"/>
+                    </a>
+                </li>
+            </ul>
+        </div>                                                        
+        
+        <!-- DIV tags for Gallery grid-->                                                
+        <div align="center" class="overlaystyleGS03Sub" id="galleryListID" alt="off">
+            <ul id="SaintThumbView" class="menuBubblesSubGS03">
+                <li>
+                    <a href="#" id="s1" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s1Btn" src="Images/Saints/Thumb/TS01.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s2" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s2Btn" src="Images/Saints/Thumb/TS02.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s3" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s3Btn" src="Images/Saints/Thumb/TS03.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s4" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s4Btn" src="Images/Saints/Thumb/TS04.png"/>
+                    </a>
+                </li>                                
+                <li>
+                    <a href="#" id="s5" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s5Btn" src="Images/Saints/Thumb/TS05.png"/>
+                    </a>
+                </li>                                
+                <li>
+                    <a href="#" id="s6" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s6Btn" src="Images/Saints/Thumb/TS06.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s7" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s7Btn" src="Images/Saints/Thumb/TS07.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s8" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s8Btn" src="Images/Saints/Thumb/TS08.png"/>
+                    </a>
+                </li>                                                                                                                                
+                
+                <li>
+                    <a href="#" id="s9" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s9Btn" src="Images/Saints/Thumb/TS09.png"/>
+                    </a>
+                </li>                                
+                <li>
+                    <a href="#" id="s10" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s10Btn" src="Images/Saints/Thumb/TS10.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s11" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s11Btn" src="Images/Saints/Thumb/TS11.png"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="s12" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s12Btn" src="Images/Saints/Thumb/TS12.png"/>
+                    </a>
+                </li>                                    
+                <li>
+                    <a href="#" id="s13" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s13Btn" src="Images/Saints/Thumb/TS13.png"/>
+                    </a>
+                </li>                                    
+                <li>
+                    <a href="#" id="s14" onclick="galleryThumbSlc(3,1);return false;">
+                        <img name="SaintPics" id="s14Btn" src="Images/Saints/Thumb/TS14.png"/>
+                    </a>
+                </li>                                    
+                <li>
+                    <a href="#" id="s15" onclick="saintSelected('15');return false;">
+                        <img name="SaintPics" id="s15Btn" src="Images/Saints/Thumb/TS15.png"/>
+                    </a>
+                </li>                                    
+                <li>
+                    <a href="#" id="s16" onclick="saintSelected('16');return false;">
+                        <img name="SaintPics" id="s16Btn" src="Images/Saints/Thumb/TS16.png"/>
+                    </a>
+                </li>                                    
+            </ul>
+        </div>
+        
+        <!-- DIV tags for Navigation Tab--> 
+        <div align="center" class="navigationBG" id="navigationID">
+            <ul class="navigationUL">
+                <li>
+                    <a href="#" id="Nav1ID" name="Nav1ID" onclick="menuSelected('1');return false;" >
+                    <img id="Nav1IDIMG" src="Images/MapMenu/NavMenu01s.png" alt="Cathedral Floor Plan" id="mapNav1Btn" name="mapNav1Btn" border="0"   />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="Nav2ID" name="Nav2ID" onclick="menuSelected('2');return false;" >
+                    <img id="Nav2IDIMG" src="Images/MapMenu/NavMenu02.png" alt="Cathedral Floor Plan" id="mapNav2Btn" name="mapNav2Btn" border="0"   />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="Nav3ID" name="Nav3ID" onclick="menuSelected('3');return false;" >
+                    <img id="Nav3IDIMG" src="Images/MapMenu/NavMenu03.png" alt="Cathedral Floor Plan" id="mapNav3Btn" name="mapNav3Btn" border="0"   />
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="Nav4ID" name="Nav4ID" onclick="menuSelected('4');return false;" >
+                    <img id="Nav4IDIMG" src="Images/MapMenu/NavMenu04.png" alt="Cathedral Floor Plan" id="mapNav4Btn" name="mapNav4Btn" border="0"   />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- DIV tags for About US-->                                                                                                                        
+        <div align="center" class="aboutUS" id="aboutUSID">
+        </div>
+        
+        <!-- DIV tags for Header/Title--> 
+        <div align="center" class="headerBG" id="headerID">
+            <div align="center" class="headerHome">
+                <a id="overlaymha" href="#" id="maphID" name="MaphID" onclick="menuSelected('0'); return false;" >
+                <img id="overlaymhi" src="Images/Header/Home.png" alt="Cathedral Floor Plan" id="MaphBtn" name="MaphBtn" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="headerTitle">
+                <img  id="overlaymmi" src="Images/Header/Map.png" alt="Cathedral Floor Plan" id="MapmBtn" name="MapmBtn" border="0"   />
+            </div>
+            <div align="center" class="headerNext">
+                <a  id="overlaymna" href="#" id="mapnID" name="MapnID" onclick="menuSelected('0'); return false;" >
+                <img  id="overlaymni" src="Images/Header/Empty.png" alt="Cathedral Floor Plan" id="MapnBtn" name="MapnBtn" border="0"   />
+                </a>	
+            </div>
+        </div>
+        
+        <!-- DIV tags for Header2/Title2--> 
+        <div align="center" class="headerBG" id="headerID2">
+            <div align="center" class="header2Home">
+                <a id="header2backa" href="#" id="maphID" name="MaphID" onclick="menuSelected('4'); return false;" >
+                <img id="header2backi" src="Images/Information/Header/back.png" id="bckbtn" name="bckbtn" border="0"   />
+                </a>	
+            </div>
+            <div align="center" class="header2Title">
+                <img  id="header2Title" src="Images/Information/Header/AboutApp.png" alt="Cathedral Floor Plan" id="MapmBtn" name="MapmBtn" border="0"   />
+            </div>
+        </div>
+        
+        <!-- DIV tags for Full Screen Image--> 
+        <div align="center" class="saintFullscreenDiv" id="saintFSID">
+            <div align="center">
+                <img id="SaintFSImg" src="Images/Saints/Full/FS01F.png" border="0"   />
+            </div>
+        </div>
+
+        <!-- DIV tags for Full Screen Image close Button--> 
+        <div align="center" class="saintFullscreenDiv" id="saintFSCntl" style="display:none; background-color:rgba(0, 0, 0, 0);">
+            <div align="center" style="position:absolute;left:270px; top:0px;">
+                <a href="#" onclick="closeFS(); return false;" >
+                <img src="Images/Saints/Other/close.png" border="0"/>
+            </div>
+        </div> 
+        
+        
+  <!-- <script src="http://argon.gatech.edu/argon.js"></script> -->
+     <script src="js/ethereal.js"></script>
+   </body>        
+
+</html>  
+ 
